@@ -22,6 +22,9 @@ public class CommentThread {
     @Enumerated(EnumType.STRING)
     private ThreadState state;
 
+    @ManyToOne
+    private PullRequest pullRequest;
+
     public Long getId() {
         return id;
     }
