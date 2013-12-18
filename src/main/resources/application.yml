@@ -1,0 +1,19 @@
+spring:
+  config.name: application
+
+  view:
+    prefix: /WEB-INF/jsp/
+    suffix: .jsp
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hibernate
+    username: whiteship
+    password: 123!@#
+
+  jpa:
+      open-in-view: true
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+        ddl-auto: update
