@@ -2,6 +2,7 @@ package whiteship.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Keesun Baik
@@ -22,6 +23,9 @@ public class PullRequest {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
+
+    @OneToMany
+    private List<CommentThread> threadList;
 
     public Long getId() {
         return id;
@@ -63,4 +67,11 @@ public class PullRequest {
         this.updated = updated;
     }
 
+    public List<CommentThread> getThreadList() {
+        return threadList;
+    }
+
+    public void setThreadList(List<CommentThread> threadList) {
+        this.threadList = threadList;
+    }
 }
