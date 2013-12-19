@@ -48,4 +48,12 @@ public class CommentThread {
     public void setState(ThreadState state) {
         this.state = state;
     }
+
+    public PullRequest getPullRequest() {
+        return pullRequest;
+    }
+
+    public void setPullRequest(PullRequest pullRequest) {
+        this.pullRequest = pullRequest;
+    }
 }
