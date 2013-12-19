@@ -1,6 +1,7 @@
 package whiteship.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,11 @@ public class PullRequest {
     private Date updated;
 
     @OneToMany
-    private List<CommentThread> threadList;
+    private List<CommentThread> threadList = new ArrayList<>();
+
+    public void add(CommentThread newThread) {
+        this.getThreadList().add(newThread);
+    }
 
     public Long getId() {
         return id;
@@ -74,4 +79,6 @@ public class PullRequest {
     public void setThreadList(List<CommentThread> threadList) {
         this.threadList = threadList;
     }
+
+
 }
