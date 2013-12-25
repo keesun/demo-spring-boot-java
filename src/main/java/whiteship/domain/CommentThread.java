@@ -23,8 +23,17 @@ public class CommentThread {
     private ThreadState state;
 
     @ManyToOne
-    @JoinColumn(name = "pull_request_id")
+    @JoinTable(
+        name = "comment_thread_pull_request",
+        joinColumns = @JoinColumn(name = "comment_thread_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "pull_request_id", referencedColumnName = "id")
+    )
     private PullRequest pullRequest;
+
+    public void add(PullRequest pullRequest) {
+        this.pullRequest = pullRequest;
+        pullRequest.getThreadList().add(this);
+    }
 
     public Long getId() {
         return id;
