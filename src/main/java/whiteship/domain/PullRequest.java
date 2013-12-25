@@ -25,12 +25,8 @@ public class PullRequest {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
 
-    @OneToMany
+    @OneToMany(mappedBy = "pullRequest")
     private List<CommentThread> threadList = new ArrayList<>();
-
-    public void add(CommentThread newThread) {
-        this.getThreadList().add(newThread);
-    }
 
     public Long getId() {
         return id;
@@ -79,6 +75,5 @@ public class PullRequest {
     public void setThreadList(List<CommentThread> threadList) {
         this.threadList = threadList;
     }
-
 
 }

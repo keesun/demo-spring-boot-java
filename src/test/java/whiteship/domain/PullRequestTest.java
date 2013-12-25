@@ -46,6 +46,6 @@ public class PullRequestTest {
         thread.setState(CommentThread.ThreadState.OPEN);
         CommentThread savedThread = commentThreadRepository.save(thread);
 
-        savedPullRequest.add(savedThread);
+        savedThread.add(savedPullRequest);
     }
 }

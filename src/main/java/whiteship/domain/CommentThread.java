@@ -22,6 +22,14 @@ public class CommentThread {
     @Enumerated(EnumType.STRING)
     private ThreadState state;
 
+    @ManyToOne
+    private PullRequest pullRequest;
+
+    public void add(PullRequest pullRequest) {
+        this.pullRequest = pullRequest;
+        pullRequest.getThreadList().add(this);
+    }
+
     public Long getId() {
         return id;
     }
@@ -44,5 +52,13 @@ public class CommentThread {
 
     public void setState(ThreadState state) {
         this.state = state;
+    }
+
+    public PullRequest getPullRequest() {
+        return pullRequest;
+    }
+
+    public void setPullRequest(PullRequest pullRequest) {
+        this.pullRequest = pullRequest;
     }
 }
