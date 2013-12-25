@@ -36,16 +36,23 @@ public class PullRequestTest {
         pullRequestRepository.deleteAll();
         commentThreadRepository.deleteAll();
 
+        PullRequest savedPullRequest = savePullRequest();
+        CommentThread savedThread = saveCommentThread();
+
+        savedPullRequest.add(savedThread);
+    }
+
+    private CommentThread saveCommentThread() {
+        CommentThread thread = new CommentThread();
+        thread.setState(CommentThread.ThreadState.OPEN);
+        return commentThreadRepository.save(thread);
+    }
+
+    private PullRequest savePullRequest() {
         PullRequest pullRequest = new PullRequest();
         pullRequest.setBody("test");
         pullRequest.setTitle("test title");
         pullRequest.setCreated(new Date());
-        PullRequest savedPullRequest = pullRequestRepository.save(pullRequest);
-
-        CommentThread thread = new CommentThread();
-        thread.setState(CommentThread.ThreadState.OPEN);
-        CommentThread savedThread = commentThreadRepository.save(thread);
-
-        savedThread.add(savedPullRequest);
+        return pullRequestRepository.save(pullRequest);
     }
 }
