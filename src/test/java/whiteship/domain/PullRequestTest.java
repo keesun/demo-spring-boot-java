@@ -39,7 +39,7 @@ public class PullRequestTest {
         PullRequest savedPullRequest = savePullRequest();
         CommentThread savedThread = saveCommentThread();
 
-        savedThread.add(savedPullRequest);
+        savedPullRequest.add(savedThread);
     }
 
     private CommentThread saveCommentThread() {

@@ -24,16 +24,11 @@ public class CommentThread {
 
     @ManyToOne
     @JoinTable(
-        name = "comment_thread_pull_request",
-        joinColumns = @JoinColumn(name = "comment_thread_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "pull_request_id", referencedColumnName = "id")
+        name = "pull_request_comment_thread",
+        joinColumns = @JoinColumn(name = "comment_thread_id", referencedColumnName = "id", insertable = false, updatable = false),
+        inverseJoinColumns = @JoinColumn(name = "pull_request_id", referencedColumnName = "id", insertable = false, updatable = false)
     )
     private PullRequest pullRequest;
-
-    public void add(PullRequest pullRequest) {
-        this.pullRequest = pullRequest;
-        pullRequest.getThreadList().add(this);
-    }
 
     public Long getId() {
         return id;

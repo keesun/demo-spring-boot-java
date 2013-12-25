@@ -25,8 +25,18 @@ public class PullRequest {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
 
-    @OneToMany(mappedBy = "pullRequest")
+    @OneToMany
+    @JoinTable(
+        name = "pull_request_comment_thread",
+        joinColumns = @JoinColumn(name = "pull_request_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "comment_thread_id", referencedColumnName = "id")
+    )
     private List<CommentThread> threadList = new ArrayList<>();
+
+    public void add(CommentThread commentThread) {
+        this.getThreadList().add(commentThread);
+        commentThread.setPullRequest(this);
+    }
 
     public Long getId() {
         return id;
