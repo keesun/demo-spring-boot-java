@@ -26,6 +26,11 @@ public class PullRequest {
     private Date updated;
 
     @OneToMany
+    @JoinTable(
+        name = "comment_thread_pull_request",
+        joinColumns = @JoinColumn(name = "pull_request_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "comment_thread_id", referencedColumnName = "id", unique = true)
+    )
     private List<CommentThread> threadList = new ArrayList<>();
 
     public void add(CommentThread newThread) {
