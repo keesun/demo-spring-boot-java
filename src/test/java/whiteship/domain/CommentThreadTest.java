@@ -47,7 +47,7 @@ public class CommentThreadTest {
         CommentThread savedThread = commentThreadRepository.save(thread);
 
         savedThread.setPullRequest(savedPullRequest);
-//        commentThreadRepository.save(savedThread);
+        commentThreadRepository.save(savedThread);
     }
 
 }

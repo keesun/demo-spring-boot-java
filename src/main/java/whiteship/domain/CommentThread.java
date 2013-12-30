@@ -22,13 +22,13 @@ public class CommentThread {
     @Enumerated(EnumType.STRING)
     private ThreadState state;
 
-    @ManyToOne
-    @JoinTable(
-        name = "comment_thread_pull_request",
-        joinColumns = @JoinColumn(name = "comment_thread_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "pull_request_id", referencedColumnName = "id")
-    )
-    private PullRequest pullRequest;
+@ManyToOne
+@JoinTable(
+    name = "comment_thread_pull_request",
+    joinColumns = @JoinColumn(name = "comment_thread_id", referencedColumnName = "id", unique = true),
+    inverseJoinColumns = @JoinColumn(name = "pull_request_id", referencedColumnName = "id")
+)
+private PullRequest pullRequest;
 
     public Long getId() {
         return id;
