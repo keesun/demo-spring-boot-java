@@ -1,10 +1,10 @@
 package whiteship.service;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import whiteship.domain.PullRequest;
+import whiteship.domain.User;
 
 /**
  * @author Keesun Baik
  */
-public interface PullRequestRepository extends JpaRepository<PullRequest, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }
