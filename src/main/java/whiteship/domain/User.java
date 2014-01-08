@@ -2,9 +2,6 @@ package whiteship.domain;
 
 import javax.persistence.*;
 
-/**
- * @author Keesun Baik
- */
 @Entity
 public class User {
 
@@ -14,7 +11,11 @@ public class User {
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+    @JoinTable(
+        name = "user_address",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
     private Address address;
 
     public long getId() {
