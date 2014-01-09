@@ -3,6 +3,7 @@ package whiteship.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -15,6 +16,9 @@ public class Address {
     private String zipcode;
 
     private String street;
+
+    @OneToOne(mappedBy = "address")
+    private User user;
 
     public long getId() {
         return id;
@@ -46,5 +50,13 @@ public class Address {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

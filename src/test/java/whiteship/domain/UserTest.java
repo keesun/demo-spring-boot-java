@@ -44,6 +44,7 @@ public class UserTest {
         addressRepository.save(address);
 
         yoon.setAddress(address);
+        address.setUser(yoon);
     }
 
 }
