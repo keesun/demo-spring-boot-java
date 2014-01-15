@@ -1,9 +1,6 @@
 package whiteship.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -14,6 +11,11 @@ public class User {
     private String name;
 
     @OneToOne
+    @JoinTable(
+        name = "user_address",
+        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id")
+    )
     private Address address;
 
     public void setAddress(Address address) {
